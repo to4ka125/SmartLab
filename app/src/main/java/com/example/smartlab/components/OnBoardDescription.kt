@@ -13,6 +13,7 @@ import com.example.smartlab.ui.theme.textDescription
 fun OnBoardDescription (modifier: Modifier = Modifier,text:String) {
     Text(
         text = text,
+        modifier = modifier,
         color = textDescription,
         fontSize = 14.sp,
         fontWeight = FontWeight.Normal,

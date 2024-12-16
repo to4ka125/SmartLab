@@ -10,9 +10,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import com.example.smartlab.layouts.OnBoard
 import com.example.smartlab.ui.theme.SmartLabTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -31,10 +34,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             SmartLabTheme {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    OnBoard(buttonText="Пропустить", headerText = "Анализы"
+                        ,decriptionText="Экспресс сбор и получение проб",
+                        dotsImg = ImageBitmap.imageResource(R.drawable.group1),
+                        ilustrasion= ImageBitmap.imageResource(R.drawable.img1),
+                        modifier = Modifier.padding(innerPadding))
                 }
             }
         }
