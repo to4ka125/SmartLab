@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.SmartLab" parent="android:Theme.Material.Light.NoActionBar" />
+
     <style name="Theme.SmartLab.Starting" parent="Theme.SplashScreen">
         <item name="android:windowBackground">@drawable/screensaver</item>
     </style>
