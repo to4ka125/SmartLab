@@ -13,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.smartlab.R
@@ -23,41 +25,33 @@ import com.example.smartlab.components.TextButton
 import com.example.smartlab.ui.theme.textDescription
 
 @Composable
-fun OnBoard(modifier: Modifier = Modifier,buttonText:String,
-            headerText:String,
-            decriptionText:String,
-            dotsImg:ImageBitmap,
-            ilustrasion:ImageBitmap
-            ) {
-    Column(modifier =modifier.fillMaxSize().padding(20.dp)) {
+fun OnBoard(modifier: Modifier = Modifier, buttomText: String,
+            headeText: String, descriptionText: String,
+            dotsImageBitmap: ImageBitmap,
+            illustration: ImageBitmap) {
+    Column(modifier = modifier.fillMaxSize().padding(20.dp)) {
+
         Row {
-            TextButton(text = buttonText, modifier = Modifier.weight(1f))
-            Image(ImageBitmap.imageResource(R.drawable.shapeadd),
-                contentDescription = null,
-                modifier = Modifier.weight(1f))
+            TextButton(text = buttomText, modifier = Modifier.weight(1f), onClick = {})
+            Image(ImageBitmap.imageResource(R.drawable.shapeadd),null, modifier = Modifier.weight(1f))
         }
         Spacer(Modifier.height(29.dp))
-        OnBoardHeader(text = headerText, modifier = Modifier.align(Alignment.CenterHorizontally))
-        Spacer(Modifier.height(26.dp))
-        OnBoardDescription(text =decriptionText,
-            modifier = Modifier.align(Alignment.CenterHorizontally))
+        OnBoardHeader(text = headeText, modifier = Modifier.align(Alignment.CenterHorizontally))
+        Spacer(Modifier.height(29.dp))
+        OnBoardDescription(text = descriptionText, modifier = Modifier.align(Alignment.CenterHorizontally))
         Spacer(Modifier.height(60.dp))
-        Image(dotsImg,
-            contentDescription = null,
-            modifier= Modifier.align(Alignment.CenterHorizontally),)
-        Spacer(Modifier.height(106.dp))
-        Image(ilustrasion, contentDescription = null,
-            modifier= Modifier.align(Alignment.CenterHorizontally).fillMaxSize(0.8f))
-
-
+        Image(dotsImageBitmap,null, modifier = Modifier.align(Alignment.CenterHorizontally))
+        Spacer(Modifier.weight(1f))
+        Image(illustration,null, modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxSize(0.8f))
     }
 }
 
 @Preview
 @Composable
 private fun OnBoardView () {
-    OnBoard(buttonText="Пропустить", headerText = "Анализы"
-    ,decriptionText="Экспресс сбор и получение проб",
-        dotsImg = ImageBitmap.imageResource(R.drawable.group1),
-        ilustrasion=ImageBitmap.imageResource(R.drawable.img1))
+    OnBoard(
+        buttomText = "Пропустить", headeText = "Анализы",
+        descriptionText = "Экспресс сбор и получение проб",
+        dotsImageBitmap = ImageBitmap.imageResource(R.drawable.group1),
+        illustration = ImageBitmap.imageResource(R.drawable.img1))
 }
