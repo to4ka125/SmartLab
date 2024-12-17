@@ -6,17 +6,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.example.smartlab.ui.theme.textButton
-
+import com.example.smartlab.ui.theme.TextButtonColor
 
 @Composable
-fun TextButton(modifier: Modifier = Modifier,text:String,onClick:()-> Unit ={}) {
-    Text(text = text,
+fun TextButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit = {}
+) {
+    Text(
+        text = text,
         modifier = modifier
             .clickable { onClick() },
-        color = textButton,
+        color = TextButtonColor,
         fontSize = 20.sp,
-        fontWeight = FontWeight.SemiBold
+        fontWeight = FontWeight.SemiBold,
     )
-
 }

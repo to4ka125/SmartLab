@@ -1,4 +1,4 @@
-package com.example.smartlab.ui.theme
+package com.example.smartlab.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
@@ -15,6 +15,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.smartlab.ui.theme.AccentColor
+import com.example.smartlab.ui.theme.InputBGColor
+import com.example.smartlab.ui.theme.InputFocusedBorderColor
+import com.example.smartlab.ui.theme.InputStrokeColor
 
 @Composable
 fun TextInput(modifier: Modifier = Modifier, placeholder: String, enabled: Boolean = true) {

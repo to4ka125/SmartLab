@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.smartlab.R
 import com.example.smartlab.ui.theme.EmailColor
-import com.example.smartlab.ui.theme.PrimaryButton
-import com.example.smartlab.ui.theme.TextInput
+import com.example.smartlab.components.PrimaryButton
+import com.example.smartlab.components.TextInput
 
 @Composable
 fun Authorization (modifier: Modifier = Modifier) {
