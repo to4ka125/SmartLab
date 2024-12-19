@@ -20,66 +20,32 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.smartlab.layouts.Authorization
 import com.example.smartlab.layouts.OnBoard
+import com.example.smartlab.navigation.AppNavigation
 import com.example.smartlab.ui.theme.SmartLabTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         enableEdgeToEdge()
         setContent {
-            val pagerState = rememberPagerState(pageCount = {
-                3
-            })
             SmartLabTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HorizontalPager(state = pagerState) {page->
-                        if (page == 0) {
-
-                            OnBoard(
-                                buttomText = "Пропустить", headeText = "Анализы",
-                                descriptionText = "Экспресс сбор и получение проб",
-                                dotsImageBitmap = ImageBitmap.imageResource(R.drawable.group1),
-                                illustration = ImageBitmap.imageResource(R.drawable.img1),
-                                modifier = Modifier.padding(innerPadding)
-                            )
-                        }else if (page==1) {
-
-                            OnBoard(
-                                buttomText = "Пропустить", headeText = "Уведомления",
-                                descriptionText = "Вы быстро узнаете о результатах",
-                                dotsImageBitmap = ImageBitmap.imageResource(R.drawable.group2),
-                                illustration = ImageBitmap.imageResource(R.drawable.img2),
-                                modifier = Modifier.padding(innerPadding))
-                        }else{
-
-                            OnBoard(
-                                buttomText = "Завершить", headeText = "Мониторинг",
-                                descriptionText = "Наши врачи всегда наблюдают \n" +
-                                        "за вашими показателями здоровья",
-                                dotsImageBitmap = ImageBitmap.imageResource(R.drawable.group3),
-                                illustration = ImageBitmap.imageResource(R.drawable.img3),
-                                modifier = Modifier.padding(innerPadding))
+                    AppNavigation(modifier = Modifier.padding(innerPadding))
                         }
-
-
-
                     }
-
                 }
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-
-}
 
 @Preview(showBackground = true)
 @Composable

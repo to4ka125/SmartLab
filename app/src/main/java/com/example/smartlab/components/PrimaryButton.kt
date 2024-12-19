@@ -10,13 +10,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.smartlab.ui.theme.AccentColor
 import com.example.smartlab.ui.theme.AccentInactiveColor
 
 @Composable
-fun PrimaryButton(modifier: Modifier = Modifier, onClick: () -> Unit = {}, Enable:Boolean=true, text:String) {
+fun PrimaryButton(modifier: Modifier = Modifier, onClick: () -> Unit = {},
+                  Enable:Boolean=true, text:String) {
     Button(
-        onClick = {},
+        onClick = {onClick()},
         modifier=modifier,
         enabled = Enable,
         shape = RoundedCornerShape(10.dp),

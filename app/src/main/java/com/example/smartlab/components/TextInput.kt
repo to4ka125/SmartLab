@@ -21,15 +21,12 @@ import com.example.smartlab.ui.theme.InputFocusedBorderColor
 import com.example.smartlab.ui.theme.InputStrokeColor
 
 @Composable
-fun TextInput(modifier: Modifier = Modifier, placeholder: String, enabled: Boolean = true) {
+fun TextInput(modifier: Modifier = Modifier, placeholder: String) {
     var text by remember { mutableStateOf("") }
-
     OutlinedTextField(
         value = text,
         onValueChange = { text = it },
         modifier = modifier,
-        enabled = enabled,
-        readOnly = true,
         placeholder = {
             Text(
                 text = placeholder,
