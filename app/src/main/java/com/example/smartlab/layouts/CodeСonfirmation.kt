@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
+
 import androidx.compose.ui.unit.sp
 import com.example.smartlab.R
 import com.example.smartlab.components.OnBoardDescription
@@ -47,6 +48,7 @@ import com.example.smartlab.ui.theme.InputFocusedBorderColor
 import com.example.smartlab.ui.theme.InputStrokeColor
 import com.example.smartlab.ui.theme.textDescription
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 @Composable
 fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
@@ -72,6 +74,11 @@ fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
     Column(modifier = modifier
         .fillMaxSize()
         .padding(top = 24.dp, start = 20.dp,end=20.dp, bottom = 56.dp)){
+
+        val supabaseUrl ="https://tzqaajdkrazubgkrsaow.supabase.co";
+        val supabaseKey ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6cWFhamRrcmF6dWJna3JzYW93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ2Mjc3MTQsImV4cCI6MjA1MDIwMzcxNH0.HGywS1RnYta73ORLJ21VnccU4EaDGi9drecyWsF8rVY";
+
+
         Button(
             onClick = {OnClick()},
             modifier = Modifier.padding(0.dp),
@@ -132,6 +139,8 @@ fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
         }
     }
 }
+
+
 
 @Preview
 @Composable

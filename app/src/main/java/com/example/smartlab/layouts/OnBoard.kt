@@ -20,7 +20,6 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.smartlab.R
 import com.example.smartlab.components.OnBoardDescription
 import com.example.smartlab.components.OnBoardHeader
@@ -38,7 +37,11 @@ fun OnBoard(modifier: Modifier = Modifier, buttomText: String,
         Row {
             TextButton(text = buttomText, modifier = Modifier.weight(1f),
                 onClick = { onClick() }, fontSize = 20.sp)
-            Image(ImageBitmap.imageResource(R.drawable.shapeadd),null, modifier = Modifier.weight(1f), alignment=Alignment.CenterEnd)
+            Image(ImageBitmap.imageResource(R.drawable.shapeadd),
+                null,
+                modifier = Modifier.weight(1f)
+                    .fillMaxSize(0.3f),
+                alignment=Alignment.CenterEnd)
         }
         Spacer(Modifier.height(29.dp))
         OnBoardHeader(text = headeText, modifier = Modifier.align(Alignment.CenterHorizontally))
@@ -46,7 +49,7 @@ fun OnBoard(modifier: Modifier = Modifier, buttomText: String,
         OnBoardDescription(text = descriptionText, modifier = Modifier.align(Alignment.CenterHorizontally))
         Spacer(Modifier.height(60.dp))
         Image(dotsImageBitmap,null, modifier = Modifier.align(Alignment.CenterHorizontally).size(58.dp))
-        Spacer(Modifier.weight(1f))
+//        Spacer(Modifier.weight(1f))
         Image(illustration,null, modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxSize(0.8f))
     }
 }
