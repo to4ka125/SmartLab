@@ -26,6 +26,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.smartlab.R
 import com.example.smartlab.components.OnBoardDescription
 import com.example.smartlab.components.PrimaryButton
@@ -51,14 +54,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 @Composable
-fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
+fun CodeConfirmation(modifier: Modifier = Modifier,
+                     OnClick:()->Unit,navController: NavController) {
     val textField = remember { mutableStateListOf("","","","","","") }
-
+    val code="111111";
     var timerSeconds by remember { mutableStateOf(60) }
 
     var isTimerRunning by remember { mutableStateOf(true) }
 
     val allFieldsFilled = textField.all { it.isNotBlank() }
+
+    val focusRequesters = remember { List(6){FocusRequester()}}
 
     LaunchedEffect(key1 = isTimerRunning) {
         if (isTimerRunning) {
@@ -75,8 +81,6 @@ fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
         .fillMaxSize()
         .padding(top = 24.dp, start = 20.dp,end=20.dp, bottom = 56.dp)){
 
-        val supabaseUrl ="https://tzqaajdkrazubgkrsaow.supabase.co";
-        val supabaseKey ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6cWFhamRrcmF6dWJna3JzYW93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ2Mjc3MTQsImV4cCI6MjA1MDIwMzcxNH0.HGywS1RnYta73ORLJ21VnccU4EaDGi9drecyWsF8rVY";
 
 
         Button(
@@ -104,9 +108,18 @@ fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             textField.forEachIndexed{index,value->
                 OutlinedTextField(
-                    value=value, onValueChange = {newValue->
+                    value=value, onValueChange = {
+                        newValue->
                         textField[index] = newValue
-                    },modifier = Modifier.size(48.dp)
+
+                        if(textField.joinToString("")==code){
+                            navController.navigate("password")
+                        }
+                        if(newValue.length==1&&index<textField.lastIndex){
+                            focusRequesters[index+1].requestFocus()
+                        }
+                    },modifier = Modifier.size(50.dp).
+                    focusRequester(focusRequesters[index]).padding(top = 1.dp)
                     , colors = OutlinedTextFieldDefaults.colors(
                         focusedContainerColor = InputBGColor,
                         unfocusedContainerColor = InputBGColor,
@@ -137,13 +150,10 @@ fun CodeConfirmation(modifier: Modifier = Modifier, OnClick:()->Unit) {
                 isTimerRunning = true
             })
         }
+
+
     }
 }
 
 
 
-@Preview
-@Composable
-private fun CodeConfirmationView() {
-    CodeConfirmation(OnClick = {})
-}

@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-17T06:50:43.256750700Z">
+        <DropdownSelection timestamp="2024-12-20T10:19:27.696912900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\android250\.android\avd\Pixel_API_30.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\android250\.android\avd\Pixel_7_Pro_API_35.avd" />
             </handle>
           </Target>
         </DropdownSelection>
@@ -15,10 +15,21 @@
       </SelectionState>
       <SelectionState runConfigName="CreatePasswordView">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-19T18:37:07.499024400Z">
+        <DropdownSelection timestamp="2024-12-20T07:45:57.669555700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=84c964c" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\android250\.android\avd\Medium_Phone.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="PatientCardPrev">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2024-12-20T08:36:22.011789Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\android250\.android\avd\Medium_Phone.avd" />
             </handle>
           </Target>
         </DropdownSelection>

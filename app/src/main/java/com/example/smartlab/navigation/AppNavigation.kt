@@ -7,13 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.smartlab.R
 import com.example.smartlab.layouts.Authorization
 import com.example.smartlab.layouts.CodeConfirmation
+import com.example.smartlab.layouts.CreatePassword
 import com.example.smartlab.layouts.OnBoard
+import com.example.smartlab.layouts.PatientCard
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
@@ -61,7 +64,15 @@ fun AppNavigation(modifier: Modifier = Modifier) {
         }
 
         composable("emailCode") {
-            CodeConfirmation(OnClick = {navControler.navigate("email")})
+            CodeConfirmation(OnClick = {navControler.navigate("email")},
+                navController = navControler)
+        }
+
+        composable("password") {
+            CreatePassword(navController = navControler)
+        }
+        composable("patientCard") {
+            PatientCard()
         }
 
     }

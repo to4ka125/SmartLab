@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -25,14 +26,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.smartlab.R
 import com.example.smartlab.components.OnBoardDescription
 import com.example.smartlab.components.TextButton
+import com.example.smartlab.navigation.AppNavigation
 import com.example.smartlab.ui.theme.InputBGColor
 import com.example.smartlab.ui.theme.textButton
 
 @Composable
-fun CreatePassword(modifier: Modifier = Modifier) {
+fun CreatePassword(modifier: Modifier = Modifier,navController: NavController) {
     val PassFieldValues = remember { mutableStateListOf("", "", "", "") }
     Column(modifier = modifier
         .fillMaxSize()
@@ -42,7 +45,8 @@ fun CreatePassword(modifier: Modifier = Modifier) {
         Text(text = "Создайте пароль", fontSize = 24.sp, fontWeight = FontWeight.SemiBold,
             modifier = Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier.height(16.dp))
-        OnBoardDescription(text = "Для защиты ваших персональных данных", modifier = Modifier.align(Alignment.CenterHorizontally))
+        OnBoardDescription(text = "Для защиты ваших персональных данных",
+            modifier = Modifier.align(Alignment.CenterHorizontally))
         Spacer(modifier.height(56.dp))
 
         Row(modifier.align(Alignment.CenterHorizontally)) {
@@ -62,12 +66,15 @@ fun CreatePassword(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Spacer(modifier.height(60.dp))
-        Column(modifier =Modifier.align(Alignment.CenterHorizontally)) {
+        Spacer(modifier.weight(1f))
+        Column(modifier =Modifier.align(Alignment.CenterHorizontally),
+            horizontalAlignment = Alignment.CenterHorizontally) {
             var counter = 1
             for(i in 1..3){
                 Spacer(modifier.height(24.dp))
-                Row(horizontalArrangement = Arrangement.spacedBy(24.dp, alignment = Alignment.CenterHorizontally)){
+                Row(horizontalArrangement = Arrangement.spacedBy(24.dp,
+                    alignment = Alignment.CenterHorizontally),
+                    modifier = Modifier){
                     for (j in 1..3){
                         val textButton = counter.toString()
                         Button(onClick = {
@@ -87,10 +94,8 @@ fun CreatePassword(modifier: Modifier = Modifier) {
                     }
                 }
             }
-
-
-
             Spacer(modifier.height(24.dp))
+
             Row(modifier=Modifier.align(Alignment.End)) {
                 Button(onClick = {
                     if(PassFieldValues.size<=4){
@@ -112,19 +117,27 @@ fun CreatePassword(modifier: Modifier = Modifier) {
                             PassFieldValues[lastIndex] = "";
                         }
                     }
-
                     },
                     modifier=Modifier.size(80.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor =Color.Transparent,
                         contentColor = Color.Black,
-                    ) ) {
+                    )
+                )
+                {
                     Image(painter = painterResource(R.drawable.del_icon),null)
+                }
+                Log.v("dfd",PassFieldValues.toString())
+
+                var pass = PassFieldValues.joinToString("")
+
+                if(pass.length == 4){
+                    pass="";
+                    navController.navigate("patientCard")
+                }
+
             }
 
-
-                Log.v("dfd",PassFieldValues.toString())
-        }
 
 }
 }}
@@ -133,5 +146,4 @@ fun CreatePassword(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun CreatePasswordView() {
-    CreatePassword()
 }
