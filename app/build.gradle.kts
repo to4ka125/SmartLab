@@ -53,12 +53,18 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.foundation)
 
-    implementation("io.github.jan-tennert.supabase:gotrue-kt:1.3.2")
-    implementation("io.ktor:ktor-client-cio:2.3.4")
-    implementation("androindx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
 
+
+    implementation(libs.retrofit)
+
+    implementation (libs.okhttp)
+
+    implementation(libs.gson)
 
     implementation(libs.supabase.kt)
+
+    implementation(libs.logging.interceptor)
+    implementation(libs.androidx.espresso.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
